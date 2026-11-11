@@ -71,12 +71,24 @@ class Stage {
     obstacles.forEach((o) => groups.set(o.type, [...(groups.get(o.type) ?? []), o]));
     groups.forEach((list) => {
       const first = list[0];
+      if (first.type === 'block') { list.forEach((o) => this.addBuilding(o)); return; }
       const mesh = new THREE.InstancedMesh(first.shape === 'circle' ? CYL : BOX, new THREE.MeshLambertMaterial({ color: first.color }), list.length);
       mesh.frustumCulled = false;
       list.forEach((o, i) => { o.mesh = mesh; o.index = i; this.place(o); });
       this.scene.add(mesh);
       if (first.movable) this.movers.push(...list);
     });
+  }
+
+  /** Bâtiment (entrepôt) du kit commun assets/building-kit.js à la place d'un bloc : bardage, portes sectionnelles, fenêtres hautes,
+      acrotère. Le kit travaille en mètres, l'arène en unités de 10 cm : groupe mis à l'échelle 10. Emprise = celle de l'obstacle. */
+  addBuilding(o) {
+    const K = (this.kit ??= BuildingKit(THREE)), acc = K.acc(), w = o.w / 10, d = o.h / 10, h = o.height / 10;
+    const n = Math.max(1, Math.floor((w - 6) / 12)), doors = Array.from({ length: n }, (_, k) => ({ face: '+z', s: (k - (n - 1) / 2) * 12, w: 6, h: 5.2, type: 'garage' }));
+    K.building(acc, { w, d, h, fh: h / 3, roof: 'flat', parapet: 0.8, door: '+x', doorType: 'block', win: [2.4, 1.3], bay: 6, openings: [...doors, ...doors.map((g) => ({ ...g, face: '-z' }))], rand: Math.random });
+    const g = K.group(acc.geometries(), (this.kitMats ??= K.materials({ wall: '#d9dadc', style: 'metal', garage: '#c9cdd2', frame: '#3a3f46' })));
+    g.position.set(o.x, 0, o.y); g.rotation.y = -o.angle; g.scale.setScalar(10);
+    this.scene.add(g);
   }
 
   place(o) {
