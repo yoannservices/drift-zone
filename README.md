@@ -42,6 +42,16 @@ src/game.js    boucle de partie (chrono, fin, meilleur score)
 src/hud.js  src/audio.js  src/map.js  src/main.js
 ```
 
+## Fiche technique
+
+Résumé de ce que fait le code, tenu à jour à chaque modification : le lire suffit pour vérifier une information sans relire tout le jeu.
+
+- **Code** : modules dans `src/` ; caméra `src/render/CameraRig.js`, voiture `src/render/CarMesh.js`, réglages caméra et couleurs `src/config/viewConfig.js`, boucle `src/game.js`, entrées `src/systems/Input.js`.
+- **Unités** : pixels du plan de jeu, environ 10 px = 1 m (voiture `carConfig.length` = 46 px).
+- **Voiture** : `assets/models/ferrari-458.glb` (CC-BY), `fitGLB(g, 46, π/2)` : avant du modèle (+Z) tourné vers +x local (sens de `car.angle`). Carrosserie `Material.001` en rouge `VIEW.colors.red`. Roues non animées.
+- **Caméras (C)** : 0 Dessus (hauteur 420 à 780 px selon la vitesse, recul = hauteur × `back`) ; 1 Poursuite (150 px derrière, 62 px de haut, angle qui rattrape celui de la voiture avec du retard) ; 2 Capot (6 px devant le centre, 13 px de haut). En vue capot le plan proche passe de 10 à 1 px (sinon le capot est coupé), il revient à 10 dans les autres vues (sinon les traces au sol scintillent).
+- **Sauvegarde** : son coupé = `driftzone.mute`.
+
 ## Crédits des modèles 3D
 
 Voir `assets/models/CREDITS.md`.
