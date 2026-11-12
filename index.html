@@ -27,12 +27,12 @@
     .card p { margin: 6px 0; } .card .big { font-size: 40px; font-weight: 800; }
     .card .cta { margin-top: 14px; font-weight: 700; color: var(--red); }
   </style>
-<link rel="stylesheet" href="assets/theme.css" />
-<link rel="stylesheet" href="assets/simulateur.css" />
-<script src="assets/loader.js" data-name="Drift Zone" data-driving="drift-zone" data-menu="#card" data-menu-hide="h1|p:nth-of-type(1)" data-description="Entraîne-toi au drift dans une arène, frôle les obstacles et garde ton combo avant la fin du chrono." data-controls="# Touches de base|Z S Q D / flèches : conduire|R : recommencer|C : changer de vue (dessus, poursuite, capot)|Échap : pause|# Touches du jeu|Espace : frein à main|M : son · G : debug|Manette : RT gaz · LT frein · stick gauche direction · A frein à main · X recommencer · Start pause" data-preload="../../assets/models/ferrari-458.glb"></script>
-<script src="assets/driving-base.js"></script>
-<script src="assets/site.js" data-project="loisirs/drift-zone/index.html"></script>
-<script src="assets/gamepad.js" data-profile="none" data-cam="0"></script>
+<link rel="stylesheet" href="./assets/theme.css" />
+<link rel="stylesheet" href="./assets/simulateur.css" />
+<script src="./assets/loader.js" data-name="Drift Zone" data-driving="drift-zone" data-menu="#card" data-menu-hide="h1|p:nth-of-type(1)" data-description="Entraîne-toi au drift dans une arène, frôle les obstacles et garde ton combo avant la fin du chrono." data-controls="# Touches de base|Z S Q D / flèches : conduire|R : recommencer|C : changer de vue (dessus, poursuite, capot)|Échap : pause|# Touches du jeu|Espace : frein à main|M : son · G : debug|Manette : RT gaz · LT frein · stick gauche direction · A frein à main · X recommencer · Start pause" data-preload="../../assets/models/ferrari-458.glb"></script>
+<script src="./assets/driving-base.js"></script>
+<script src="./assets/site.js" data-project="loisirs/drift-zone/index.html"></script>
+<script src="./assets/gamepad.js" data-profile="none" data-cam="0"></script>
 </head>
 <body>
   <div id="game"></div>
@@ -45,6 +45,6 @@
   <div id="popups"></div>
   <div id="overlay"><div class="card" id="card"><h1>DRIFT ZONE</h1><p>Chargement…</p><p style="font-size:12px;opacity:.7">Si rien ne change, ouvre la console (F12) : une erreur de chargement y est affichée.</p></div></div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"}}</script>
-<script type="module" src="assets/three-compat.js" data-scripts="src/config/carConfig.js,src/config/scoreConfig.js,src/config/obstacles.js,src/config/viewConfig.js,src/systems/Car.js,src/systems/Collision.js,src/systems/Score.js,src/systems/Input.js,src/systems/Obstacles.js,src/map.js,assets/building-kit.js,src/render/Stage.js,src/render/CarMesh.js,src/render/CameraRig.js,src/render/Skids.js,src/render/Smoke.js,src/audio.js,src/hud.js,src/game.js,src/main.js"></script>
+<script type="module" src="./assets/three-compat.js" data-scripts="src/config/carConfig.js,src/config/scoreConfig.js,src/config/obstacles.js,src/config/viewConfig.js,src/systems/Car.js,src/systems/Collision.js,src/systems/Score.js,src/systems/Input.js,src/systems/Obstacles.js,src/map.js,./assets/building-kit.js,src/render/Stage.js,src/render/CarMesh.js,src/render/CameraRig.js,src/render/Skids.js,src/render/Smoke.js,src/audio.js,src/hud.js,src/game.js,src/main.js"></script>
 </body>
 </html>
